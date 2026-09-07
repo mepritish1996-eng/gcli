@@ -14,9 +14,13 @@ pub fn read_input(verb: &'static str, path: Option<&str>) -> Result<String, Gcli
     match path {
         None | Some("-") => {
             let mut buf = String::new();
-            std::io::stdin()
-                .read_to_string(&mut buf)
-                .map_err(|e| GcliError::new(verb, ErrorCode::InputNotFound, format!("failed to read stdin: {e}")))?;
+            std::io::stdin().read_to_string(&mut buf).map_err(|e| {
+                GcliError::new(
+                    verb,
+                    ErrorCode::InputNotFound,
+                    format!("failed to read stdin: {e}"),
+                )
+            })?;
             Ok(buf)
         }
         Some(p) => fs::read_to_string(p)

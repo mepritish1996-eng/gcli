@@ -11,7 +11,7 @@ use serde::Serialize;
 use crate::error::{ErrorCode, GcliError};
 use crate::io::read_input;
 
-const VERB: &'static str = "info";
+const VERB: &str = "info";
 
 #[derive(Debug, Serialize)]
 pub struct InfoResult {
@@ -53,9 +53,13 @@ impl std::fmt::Display for InfoResult {
 pub fn run(path: Option<&str>) -> Result<InfoResult, GcliError> {
     let raw = read_input(VERB, path)?;
 
-    let parsed: GeoJson = raw
-        .parse()
-        .map_err(|e| GcliError::new(VERB, ErrorCode::InvalidGeometry, format!("not valid GeoJSON: {e}")))?;
+    let parsed: GeoJson = raw.parse().map_err(|e| {
+        GcliError::new(
+            VERB,
+            ErrorCode::InvalidGeometry,
+            format!("not valid GeoJSON: {e}"),
+        )
+    })?;
 
     // RFC 7946 mandates WGS84 (CRS84) unless a legacy `crs` member overrides
     // it — real, honest default, not a guess. `GeoJson::Feature`/`FeatureCollection`
@@ -103,7 +107,11 @@ pub fn run(path: Option<&str>) -> Result<InfoResult, GcliError> {
         format: "GeoJSON",
         geometry_types,
         feature_count: features.len(),
-        bbox: if saw_any_coord { Some([minx, miny, maxx, maxy]) } else { None },
+        bbox: if saw_any_coord {
+            Some([minx, miny, maxx, maxy])
+        } else {
+            None
+        },
         crs,
     })
 }
@@ -130,7 +138,9 @@ fn visit_coords(v: &GeoValue, f: &mut impl FnMut(f64, f64)) {
         GeoValue::LineString(line) => line.iter().for_each(|p| f(p[0], p[1])),
         GeoValue::MultiLineString(lines) => lines.iter().flatten().for_each(|p| f(p[0], p[1])),
         GeoValue::Polygon(rings) => rings.iter().flatten().for_each(|p| f(p[0], p[1])),
-        GeoValue::MultiPolygon(polys) => polys.iter().flatten().flatten().for_each(|p| f(p[0], p[1])),
+        GeoValue::MultiPolygon(polys) => {
+            polys.iter().flatten().flatten().for_each(|p| f(p[0], p[1]))
+        }
         GeoValue::GeometryCollection(geoms) => {
             for g in geoms {
                 visit_coords(&g.value, f);

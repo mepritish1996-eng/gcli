@@ -42,7 +42,10 @@ fn main() -> ExitCode {
         Command::Info { path } => match info::run(path.as_deref()) {
             Ok(result) => {
                 if cli.json {
-                    println!("{}", serde_json::to_string(&result).expect("InfoResult is always serializable"));
+                    println!(
+                        "{}",
+                        serde_json::to_string(&result).expect("InfoResult is always serializable")
+                    );
                 } else {
                     print!("{result}");
                 }

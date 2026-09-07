@@ -39,13 +39,13 @@ impl ErrorCode {
     /// parsing stderr, same as BSD tools already do.
     pub fn exit_code(self) -> u8 {
         match self {
-            ErrorCode::InputNotFound => 66,   // EX_NOINPUT
-            ErrorCode::InvalidGeometry => 65, // EX_DATAERR
+            ErrorCode::InputNotFound => 66,     // EX_NOINPUT
+            ErrorCode::InvalidGeometry => 65,   // EX_DATAERR
             ErrorCode::UnsupportedFormat => 65, // EX_DATAERR
-            ErrorCode::CrsUnknown => 65,      // EX_DATAERR
-            ErrorCode::PermissionDenied => 77, // EX_NOPERM
-            ErrorCode::Timeout => 75,         // EX_TEMPFAIL (retry-safe)
-            ErrorCode::Internal => 70,        // EX_SOFTWARE
+            ErrorCode::CrsUnknown => 65,        // EX_DATAERR
+            ErrorCode::PermissionDenied => 77,  // EX_NOPERM
+            ErrorCode::Timeout => 75,           // EX_TEMPFAIL (retry-safe)
+            ErrorCode::Internal => 70,          // EX_SOFTWARE
         }
     }
 }
@@ -78,11 +78,21 @@ pub struct GcliError {
 
 impl GcliError {
     pub fn new(verb: &'static str, code: ErrorCode, message: impl Into<String>) -> Self {
-        GcliError { verb, level: Level::Error, code, message: message.into() }
+        GcliError {
+            verb,
+            level: Level::Error,
+            code,
+            message: message.into(),
+        }
     }
 
     pub fn warn(verb: &'static str, code: ErrorCode, message: impl Into<String>) -> Self {
-        GcliError { verb, level: Level::Warn, code, message: message.into() }
+        GcliError {
+            verb,
+            level: Level::Warn,
+            code,
+            message: message.into(),
+        }
     }
 
     /// The real, numeric process exit code this error should produce.
