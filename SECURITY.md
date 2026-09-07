@@ -36,5 +36,4 @@ Real, in-scope concerns for a tool like this:
 
 No formal SLA yet at this pre-1.0 stage — real, good-faith effort to
 acknowledge quickly and fix before any public disclosure. This gets a real
-SLA once `gcli` has real external users depending on it (see
-`docs/UNIX_grammar.md` §19).
+SLA once `gcli` has real external users depending on it.

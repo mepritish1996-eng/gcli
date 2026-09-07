@@ -40,8 +40,7 @@ nobody ever defined one abstraction spanning all three. `gcli` does, and
 follows real, established convention everywhere one already exists rather
 than inventing new syntax: SQL for predicates (`--where`), CSS's `color()`
 function for color values, GDAL's own GeoJSONSeq for streaming, real POSIX
-argument conventions for flags. The full reasoning and the complete verb
-catalogue: [`docs/UNIX_grammar.md`](docs/UNIX_grammar.md).
+argument conventions for flags.
 
 ## Install
 
@@ -55,9 +54,8 @@ cargo build --release
 ```
 
 Package-manager distribution (conda-forge, winget, Scoop, npm) is planned,
-not live yet — see `docs/UNIX_grammar.md` §20 for the real reasoning behind
-that priority order (conda-forge first, because that's already how most
-real GIS users get GDAL onto their machine).
+not live yet — conda-forge is the real priority, since that's already how
+most real GIS users get GDAL onto their machine.
 
 ## Status
 
@@ -67,19 +65,15 @@ the real `gcli: <verb>: <LEVEL>: <CODE>: <message>` stderr contract with
 sysexits.h-style exit codes. No engine dispatch (GDAL/PostGIS/etc.) wired
 yet — that's the next real milestone. Full verb catalogue, the `port`
 system (QGIS/ArcGIS/remote-DB plugins), the AI branch, and the native
-renderer are all real, designed (`docs/UNIX_grammar.md`), and not yet
-built. See [`CHANGELOG.md`](CHANGELOG.md) for what's actually shipped.
+renderer are all designed and on the roadmap, not yet built. See
+[`CHANGELOG.md`](CHANGELOG.md) for what's actually shipped.
 
 ## Contributing
 
-Real contributions welcome — start with
-[`CONTRIBUTING.md`](CONTRIBUTING.md) (commit conventions, code shape, how
-to build/test) and [`docs/UNIX_grammar.md`](docs/UNIX_grammar.md) (the
-design authority — read this before proposing a new verb or flag; it also
-has a self-critique checklist for catching a disguised `--type` fork before
-it ships as one). Also cross-check against
-[clig.dev](https://clig.dev/) (Command Line Interface Guidelines), a real,
-community-maintained reference this project deliberately follows.
+Real contributions welcome — start with [`CONTRIBUTING.md`](CONTRIBUTING.md)
+(commit conventions, code shape, how to build/test). Also cross-check
+against [clig.dev](https://clig.dev/) (Command Line Interface Guidelines),
+a real, community-maintained reference this project deliberately follows.
 
 ## Project governance
 
@@ -103,6 +97,4 @@ community-maintained reference this project deliberately follows.
 crates/
   gcli/         binary crate — argv parsing + I/O plumbing only
   gcli-core/    the real grammar/dispatch library — verbs, errors, I/O
-docs/
-  UNIX_grammar.md   the canonical spec
 ```

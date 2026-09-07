@@ -1,7 +1,6 @@
-# Real, automatic review requests — not a formality. Anyone touching the
-# design authority or governance docs gets the owner pulled in automatically.
+# Real, automatic review requests — not a formality. Anyone touching
+# governance docs gets the owner pulled in automatically.
 
-/docs/UNIX_grammar.md   @mepritish1996-eng
 /VERSIONING.md          @mepritish1996-eng
 /SECURITY.md            @mepritish1996-eng
 /CONTRIBUTING.md        @mepritish1996-eng

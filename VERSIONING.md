@@ -23,9 +23,9 @@ policy:
 
 1. **Available** — the normal, supported state.
 2. **Deprecated** — still works exactly as before, but emits a real
-   `WARN`-level line on stderr (§16 of `docs/UNIX_grammar.md`) naming what's
-   deprecated, why, and what to use instead. Deprecation is announced in a
-   MINOR release, never silently.
+   `WARN`-level line on stderr naming what's deprecated, why, and what to
+   use instead. Deprecation is announced in a MINOR release, never
+   silently.
 3. **End of support** — removed only in the *next* MAJOR release after
    deprecation, never sooner. A user or the agent always has at least one
    full MAJOR version's worth of real warning before anything actually
@@ -40,6 +40,5 @@ script.
 
 Per real semver convention, `0.x` releases may break things between MINOR
 bumps while the core verb catalogue and primitives are still being proven
-(see the "ships before the platform, get real feedback" plan in
-`docs/UNIX_grammar.md` §19) — the staged deprecation policy above becomes a
-hard guarantee starting at `1.0.0`, not before.
+against real usage — the staged deprecation policy above becomes a hard
+guarantee starting at `1.0.0`, not before.

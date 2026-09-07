@@ -2,15 +2,15 @@
 
 ## Before adding a verb or a flag
 
-Read [`docs/UNIX_grammar.md`](docs/UNIX_grammar.md) first — it's the real
-design authority, not this file. A new verb or flag needs to actually fit
-the grammar already established there (the "one job per verb" self-critique
-in particular — check whether what you're adding is secretly a hidden
+A new verb or flag needs to actually fit the existing grammar — in
+particular, check whether what you're adding is secretly a hidden
 `--type` fork of something that already exists before adding a new
-command). Also worth cross-checking against
+command (see the existing verbs in `crates/gcli-core/src/verbs/` for the
+pattern). Also worth cross-checking against
 [clig.dev](https://clig.dev/) (Command Line Interface Guidelines) — a
-second, real, community-maintained reference this project deliberately
-follows.
+real, community-maintained reference this project deliberately follows.
+Open an issue first for anything nontrivial, using the feature/verb
+request template, so the shape can be discussed before code is written.
 
 ## Commit messages
 

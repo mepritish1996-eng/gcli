@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in gcli doesn't behave the way docs/UNIX_grammar.md says it should.
+description: Something in gcli doesn't behave the way its own documented grammar says it should.
 labels: ["bug"]
 body:
   - type: input
@@ -21,7 +21,7 @@ body:
     id: expected
     attributes:
       label: Expected behavior
-      description: What docs/UNIX_grammar.md's grammar/verb catalogue says should happen.
+      description: What the documented grammar/verb catalogue says should happen.
     validations:
       required: true
   - type: textarea

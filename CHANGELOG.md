@@ -18,8 +18,8 @@ MAJOR/MINOR/PATCH bump.
 
 **NOTES**
 - Pre-1.0: the grammar and verb catalogue are still being proven against
-  real usage (see `docs/UNIX_grammar.md` §19) — breaking changes may still
-  happen between `0.x` releases without a full deprecation cycle. The
+  real usage — breaking changes may still happen between `0.x` releases
+  without a full deprecation cycle. The
   staged deprecation guarantee in `VERSIONING.md` takes effect at `1.0.0`.
 
 **FEATURES**
