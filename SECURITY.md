@@ -1,10 +1,10 @@
 # Security policy
 
-`gcli` shells out to real external engines (GDAL/PDAL/PostGIS/pgRouting/
-OSRM) and reads/writes real user data and files — a real vulnerability here
-(argument injection when building a subprocess call, path traversal when
-resolving a positional-arg file, unsafe deserialization of untrusted input)
-has real consequences, not just a bug report.
+`gcli` shells out to real bundled processing engines internally and reads/
+writes real user data and files — a real vulnerability here (argument
+injection when building a subprocess call, path traversal when resolving a
+positional-arg file, unsafe deserialization of untrusted input) has real
+consequences, not just a bug report.
 
 ## Reporting a vulnerability
 
@@ -20,8 +20,8 @@ actually do).
 ## Scope
 
 Real, in-scope concerns for a tool like this:
-- Command/argument injection when `gcli` constructs a call to an external
-  engine (GDAL, etc.) from user/agent-supplied input.
+- Command/argument injection when `gcli` constructs a call to one of its
+  internal processing engines from user/agent-supplied input.
 - Path traversal or symlink-following when resolving a positional-arg file
   path.
 - Unsafe parsing of untrusted GeoJSON/data files (a malformed or malicious

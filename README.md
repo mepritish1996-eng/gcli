@@ -1,17 +1,16 @@
 # gcli
 
-**One grammar for GDAL, PostGIS, PDAL, pgRouting, and OSRM.**
+**The single command-line tool for GIS. Everything included.**
 
 ![status](https://img.shields.io/badge/status-early%20%2F%20v0.1.0-orange)
 ![license](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)
 
-GIS has five real, excellent, decades-proven engines — and five completely
-different, incompatible ways of talking to them. `ogr2ogr -t_srs`,
-`ST_Transform(geom, srid)`, `pgr_dijkstra(...)`, an OSRM HTTP endpoint — no
-shared grammar, no way to pipe one into the next. `gcli` is one real,
-Unix-shaped command language sitting in front of all of them — the engines
-underneath are swappable implementation details; the grammar is the one
-thing that stays constant.
+GIS has always meant assembling a pile of separate, incompatible tools —
+different commands, different syntax, nothing that pipes into anything
+else, each one with its own install story. `gcli` is one real, Unix-shaped
+command language for the whole workflow — data, processing, and rendering —
+with everything it needs already included. Install it once; there's
+nothing else to assemble.
 
 ```sh
 $ gcli info rivers.geojson
@@ -29,18 +28,16 @@ $ cat rivers.geojson | gcli info    # reads stdin — every verb pipes
 
 ## Why
 
-Every real GIS platform — QGIS, ArcGIS, a raw PostGIS+GDAL pipeline — is
-the same three things underneath: **data**, **processing**, and rendering
-(which is really just processing whose output happens to be visual). None
-of the tools that actually do the processing were ever built to compose
-with each other, because each solves a genuinely different *shape* of
-computation — a stateless transform (`buffer`, `reproject`), a build-once/
-query-many index (a routing graph), or a relational query (SQL) — and
-nobody ever defined one abstraction spanning all three. `gcli` does, and
-follows real, established convention everywhere one already exists rather
-than inventing new syntax: SQL for predicates (`--where`), CSS's `color()`
-function for color values, GDAL's own GeoJSONSeq for streaming, real POSIX
-argument conventions for flags.
+Every real GIS platform — QGIS, ArcGIS, any serious pipeline — is the same
+three things underneath: **data**, **processing**, and rendering (which is
+really just processing whose output happens to be visual). Nothing in that
+space was ever built to compose — each real GIS operation is a genuinely
+different *shape* of computation, and nobody defined one language spanning
+all of them. `gcli` does, and follows real, established convention wherever
+one already exists rather than inventing new syntax: SQL for predicates
+(`--where`), CSS's `color()` function for color values, real streaming
+formats for piping, real POSIX argument conventions for flags. One
+consistent grammar, one install, no separate toolchain to assemble.
 
 ## Install
 
@@ -54,18 +51,18 @@ cargo build --release
 ```
 
 Package-manager distribution (conda-forge, winget, Scoop, npm) is planned,
-not live yet — conda-forge is the real priority, since that's already how
-most real GIS users get GDAL onto their machine.
+not live yet — one install, everything `gcli` needs included, no separate
+toolchain to set up first.
 
 ## Status
 
 Early, honestly: one real verb (`info`, GeoJSON only) proves the grammar
 end to end — argv parsing, `--json` machine-readable output, stdin piping,
 the real `gcli: <verb>: <LEVEL>: <CODE>: <message>` stderr contract with
-sysexits.h-style exit codes. No engine dispatch (GDAL/PostGIS/etc.) wired
-yet — that's the next real milestone. Full verb catalogue, the `port`
-system (QGIS/ArcGIS/remote-DB plugins), the AI branch, and the native
-renderer are all designed and on the roadmap, not yet built. See
+sysexits.h-style exit codes. Real processing isn't wired up yet — that's
+the next real milestone. Full verb catalogue, the `port` system (QGIS/
+ArcGIS/remote-DB plugins), the AI branch, and the native renderer are all
+designed and on the roadmap, not yet built. See
 [`CHANGELOG.md`](CHANGELOG.md) for what's actually shipped.
 
 ## Contributing
