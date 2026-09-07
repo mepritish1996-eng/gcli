@@ -1,0 +1,28 @@
+name: Feature / verb request
+description: Propose a new verb, flag, or capability.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What real GIS task does this address?
+      description: A concrete, real task — not an abstract capability. What are you actually trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed command shape
+      description: >
+        Sketch the actual command, following docs/UNIX_grammar.md's conventions
+        (long flags, `--where`/SQL for predicates, `color(<space> <values>)` for
+        color, etc.). If proposing a new verb, run the self-critique check first:
+        does this secretly duplicate an existing verb, or hide a `--type` fork
+        that should be split into separate verbs instead?
+      placeholder: "gcli new-verb --flag value input.geojson"
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Why doesn't an existing verb/flag already cover this?

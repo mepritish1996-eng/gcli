@@ -1,0 +1,15 @@
+[package]
+name = "gcli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "gcli — the universal GIS CLI"
+
+[[bin]]
+name = "gcli"
+path = "src/main.rs"
+
+[dependencies]
+gcli-core = { path = "../gcli-core" }
+clap.workspace = true
+serde_json.workspace = true

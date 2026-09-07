@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in gcli doesn't behave the way docs/UNIX_grammar.md says it should.
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: gcli version
+      description: Output of `gcli --version`
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Exact command
+      description: The full command that triggered the problem, copy-pasted exactly (including flags).
+      placeholder: "gcli buffer --dist 500 rivers.geojson"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What docs/UNIX_grammar.md's grammar/verb catalogue says should happen.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened — include the real stderr output (the `gcli: <verb>: <LEVEL>: <CODE>: <message>` line) if there was one.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "Windows 11 / macOS 15 / Ubuntu 24.04"
+    validations:
+      required: true

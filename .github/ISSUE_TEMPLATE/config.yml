@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question / discussion
+    url: https://github.com/mepritish1996-eng/gcli/discussions
+    about: For "how do I..." questions and general discussion — not a bug or a concrete feature proposal.
+  - name: Security vulnerability
+    url: https://github.com/mepritish1996-eng/gcli/security/advisories/new
+    about: Do not open a public issue for a security concern — see SECURITY.md.
